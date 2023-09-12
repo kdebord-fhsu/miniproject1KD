@@ -4,6 +4,7 @@
 import yfinance as yf
 import pprint
 import numpy as np
+import matplotlib.pyplot as plt
 
 # (5/5 points) Initial comments with your name, class and project at the top of your .py file.
 # (5/5 points) Proper import of packages used.
@@ -25,7 +26,8 @@ def getClosing(ticker):
 
 nvdaClosing = np.array(getClosing("NVDA"))
 
-print(nvdaClosing)
+plt.plot(nvdaClosing)
+plt.show()
 
 
 
