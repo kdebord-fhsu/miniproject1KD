@@ -16,19 +16,18 @@ def getClosing(ticker):
     hist = stock.history(period="10d")
 
     closingList = []
+    stocks = ["SONY", "KO", "AAPL", "UAL", "NVDA"]
 
-    for price in hist['Adj Close']:
-       closingList.append(round(int(price)))
+    for price in hist['Close']:
+       closingList.append(round(price))
 
     return closingList
 
-    nvdaClosing = np.ndarray(getClosing("NVDA"))
+nvdaClosing = np.array(getClosing("NVDA"))
 
-    nvda = getClosing("NVDA")
+print(nvdaClosing)
 
-    stocks = ["SONY", "KO", "AAPL", "UAL", "NVDA"]
 
-    print(getClosing("SONY"))
 
 # (10/10 points) Store this information in a list that you will convert to a ndarray in NumPy.
 # (10/10 points) Plot these 5 graphs. Feel free to add as much information to the graphs as you like exploring the documentation for matplotlib. At minimum it just needs to show 10 data points.
