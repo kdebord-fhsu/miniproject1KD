@@ -2,31 +2,34 @@
 # Kelton DeBord
 # Mini Project 1
 import yfinance as yf
-import pprint
 import numpy as np
 import matplotlib.pyplot as plt
 
 # (5/5 points) Initial comments with your name, class and project at the top of your .py file.
 # (5/5 points) Proper import of packages used.
-
 # (20/20 points) Using an API of your choice (yfinance works), collect the closing price of 5 of your favorite stock tickers for the last 10 trading days.
 
 def getClosing(ticker):
     stock = yf.Ticker(ticker)
-    # get historical market data (10 days)
-    hist = stock.history(period="10d")
-
-    closingList = []
-    stocks = ["SONY", "KO", "AAPL", "UAL", "NVDA"]
-
-    for price in hist['Close']:
-       closingList.append(round(price))
-
+    hist = stock.history(period="15d")
+    closingList = [round(price) for price in hist['Close']]
     return closingList
 
-nvdaClosing = np.array(getClosing("NVDA"))
+stocks = ["SONY", "KO", "AAPL", "UAL", "NVDA"]
 
-plt.plot(nvdaClosing)
+# Create separate plots for each stock
+for stock_symbol in stocks:
+    stockClosing = np.array(getClosing(stock_symbol))
+    days = list(range(1, len(stockClosing) + 1))
+
+    # Create a new figure and axis for each stock
+    plt.figure()
+    plt.plot(days, stockClosing)
+    plt.xlabel("Days")
+    plt.ylabel("Closing Price")
+    plt.title(f"Closing Price for {stock_symbol}")
+
+# Show all the plots
 plt.show()
 
 
