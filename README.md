@@ -12,3 +12,9 @@ This project will be using the packages NumPy and Matplotlib in order to create 
 Please install the following:
 
 pip install -r requirements.txt
+
+# How to Run
+Within a terminal window, please type the following:
+```
+python main.py
+```
