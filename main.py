@@ -24,7 +24,7 @@ def getClosing(ticker):
 
 # Create our /charts folder
 try:
-    Path("charts").mkdir
+    Path("charts").mkdir()
 except FileExistsError:
     pass
 
@@ -39,17 +39,19 @@ for stock_symbol in stocks:
     plt.figure()
     plt.plot(days, stockClosing)
     plt.xlabel("Days")
-    plt.ylabel("Closing Price")
+    plt.ylabel("Closing Price (USD $)")
     plt.title(f"Closing Price for {stock_symbol}")
 
-#Builds file name and saves to file
-saveFile = "charts" + stocks + "/.png"
-plt.savefig("charts/")
+    #Builds file name and saves to file
+    saveFile = f"charts/{stock_symbol}.png"
+    plt.savefig(saveFile)
 
 # Show all the plots
 plt.show()
 
-
-
-
+def getStocks():
+    print("Please enter 5 stocks to graph:")
+    for i in range(1, 6):
+        stock_symbol = input(f"Enter stock ticker number {i}: ").strip().upper()
+        stocks.append(stock_symbol)
 
